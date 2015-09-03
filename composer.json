@@ -8,6 +8,7 @@
             "email": "paul.vidal.lujan@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*"
