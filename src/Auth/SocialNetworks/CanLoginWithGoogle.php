@@ -2,7 +2,7 @@
 
 namespace Daylight\Auth\SocialNetworks;
 
-use Daylight\Auth\SocialNetworks\SocialNetworkProviders;
+use Daylight\Auth\SocialNetworks\SocialProviders;
 
 trait CanLoginWithGoogle
 {
@@ -11,6 +11,6 @@ trait CanLoginWithGoogle
      */
     public function google()
     {
-        return $this->hasOne(\Daylight\Database\Models\SocialAccount::class, 'user_id', 'id')->whereProvider(SocialNetworkProviders::GOOGLE);
+        return $this->hasOne(\Daylight\Database\Models\SocialAccount::class, 'user_id', 'id')->whereProvider(SocialProviders::GOOGLE);
     }
 }

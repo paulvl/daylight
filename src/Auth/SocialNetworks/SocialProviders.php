@@ -2,7 +2,7 @@
 
 namespace Daylight\Auth\SocialNetworks;
 
-abstract class SocialNetworkProviders
+abstract class SocialProviders
 {
 	const FACEBOOK = "facebook";
 	const GOOGLE = "google";

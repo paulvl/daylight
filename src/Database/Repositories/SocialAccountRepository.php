@@ -17,7 +17,7 @@ class SocialAccountRepository
 
 	public function instance($callbackData)
 	{
-		$socialAccount = SocialAccount::firstOrNew([ //fix this when Tayolor fix this part
+		$socialAccount = SocialAccount::firstOrNew([
 			'id' => $callbackData->id,
 			'email' => $callbackData->email,
 			'provider' => $this->provider,
@@ -26,7 +26,7 @@ class SocialAccountRepository
 
 		if(!$socialAccount->exists)
 		{
-			$socialAccount = SocialAccount::firstOrNew([ //fix this when Tayolor fix this part
+			$socialAccount = SocialAccount::firstOrNew([ 
 				'email' => $callbackData->email
 			]);
 		}
@@ -40,7 +40,6 @@ class SocialAccountRepository
 		}
 
 		return $socialAccount;
-
 	}
 
 	public function createFromUser($user, SocialAccount $socialAccount)
@@ -49,8 +48,11 @@ class SocialAccountRepository
 		{
 	        throw new InvalidArgumentException("'create' method must return an instance of '".$this->userModel."'");
 		}
+
 		$socialNetworkProvider = $this->provider;
+
 		$user->$socialNetworkProvider()->save($socialAccount);
+
 		return $user;
 	}
 

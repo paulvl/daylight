@@ -77,7 +77,8 @@ class AccountConfirmationServiceProvider extends ServiceProvider
             return new DbRepository($connection, $table, $key, $expire);
         });
     }
-     /**
+    
+    /**
     * Register the auth:clear-confirmations command.
     */
     private function registerClearConfirmationsCommand()

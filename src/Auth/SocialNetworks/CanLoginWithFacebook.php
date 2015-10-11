@@ -2,7 +2,7 @@
 
 namespace Daylight\Auth\SocialNetworks;
 
-use Daylight\Auth\SocialNetworks\SocialNetworkProviders;
+use Daylight\Auth\SocialNetworks\SocialProviders;
 
 trait CanLoginWithFacebook
 {
@@ -11,6 +11,6 @@ trait CanLoginWithFacebook
      */
     public function facebook()
     {
-        return $this->hasOne(\Daylight\Database\Models\SocialAccount::class, 'user_id', 'id')->whereProvider(SocialNetworkProviders::FACEBOOK);
+        return $this->hasOne(\Daylight\Database\Models\SocialAccount::class, 'user_id', 'id')->whereProvider(SocialProviders::FACEBOOK);
     }
 }

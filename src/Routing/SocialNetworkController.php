@@ -47,8 +47,21 @@ abstract class SocialNetworkController extends BaseController
     public function getCallback()
     {
         $callbackData = Socialite::driver($this->provider)->user();
+
+/*        $socialAccount = \Daylight\Database\Models\SocialAccount::firstOrNew([ //fix this when Tayolor fix this part
+            'id' => $callbackData->id,
+            'email' => $callbackData->email,
+            'provider' => $this->provider,
+            'avatar' => $callbackData->avatar
+        ]);
+
+        return dd($socialAccount->exists);
+*/
+
         $socialAccount = $this->socialAccountRepository->instance($callbackData);
-        $user = $socialAccount->exists ? $this->socialAccountRepository->retrieveExistingUser($socialAccount, $callbackData) : $this->socialAccountRepository->createFromUser($this->create($callbackData), $socialAccount);
+        $user = $socialAccount->exists
+            ? $this->socialAccountRepository->retrieveExistingUser($socialAccount, $callbackData)
+            : $this->socialAccountRepository->createFromUser($this->create($callbackData), $socialAccount);
         Auth::login($user);
         return redirect($this->redirectPath())->with('status', 'Logged in with '.$this->provider);
     }
