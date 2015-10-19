@@ -1,6 +1,6 @@
 <?php
 
-namespace Daylight\Http\Response;
+use Daylight\Http\Response;
 
 if (! function_exists('responseOk')) {
 	function responseOk($content, array $headers = []){
