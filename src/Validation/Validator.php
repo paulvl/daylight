@@ -21,7 +21,10 @@ class Validator extends IlluminateValidator
     public function validateNullOrExists( $attribute, $value, $parameters )
     {
         if ($value == null)
+        {
+            $parameters[$value] = null;
             return true;
+        }
         else
             return $this->validateExists($attribute, $value, $parameters);
     }
