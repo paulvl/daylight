@@ -3,7 +3,6 @@
 namespace Daylight\Routing;
 
 use Illuminate\Http\Request;
-use Daylight\Routing\ValidateRequest;
 
 trait ApiCrudFunctions
 {
