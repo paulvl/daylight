@@ -23,6 +23,8 @@ class Validator extends IlluminateValidator
         if ($value == null)
         {
             $parameters[$value] = null;
+            \Log::info('attribute: '.$attribute);
+            \Log::info('value: '.$value);
             return true;
         }
         else
