@@ -10,10 +10,12 @@ trait ApiCrudFunctions
 
 	public function createOrFail($class, Request $request)
     {
+        $requestData = $request->all();
+
         $errorMsg = isset($this->errorMsg) ? $this->errorMsg : 'content cannot be parsed';
         $okMsg = isset($this->okMsg) ? $this->okMsg : 'record was created successfully';
 
-        $validator = $this->validator($request->all());
+        $validator = $this->validator($requestData);
 
         if ($validator->fails()) {
             return responseJsonBadRequest( ['msg' => $errorMsg, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
@@ -24,7 +26,7 @@ trait ApiCrudFunctions
         	return $this->create($request);
         }
 
-        $modelInstance = $class::create($request->all());
+        $modelInstance = $class::create($requestData);
 
         // $modelInstance = $this->create($request->all());
         return responseJsonOk( ['msg' => $okMsg] );
