@@ -18,7 +18,8 @@
             "Daylight\\": "src/"
         },
         "files": [
-            "src/Http/helpers.php"
+            "src/Http/helpers.php",
+            "files/helpers.php",
         ]
     }
 }
