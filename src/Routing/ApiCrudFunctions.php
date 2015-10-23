@@ -12,13 +12,13 @@ trait ApiCrudFunctions
     {
         $requestData = $request->all();
 
-        $errorMsg = isset($this->errorMsg) ? $this->errorMsg : 'content cannot be parsed';
-        $okMsg = isset($this->okMsg) ? $this->okMsg : 'record was created successfully';
+        $errorMessage = isset($this->errorMessage) ? $this->errorMessage : 'content cannot be parsed';
+        $okMessage = isset($this->okMessage) ? $this->okMessage : 'record was created successfully';
 
         $validator = $this->validator($requestData);
 
         if ($validator->fails()) {
-            return responseJsonUnprocessableEntity( ['msg' => $errorMsg, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
+            return responseJsonUnprocessableEntity( ['message' => $errorMessage, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
         }
 
         if( method_exists($this,'create') )
@@ -29,7 +29,7 @@ trait ApiCrudFunctions
         $modelInstance = $class::create($requestData);
 
         // $modelInstance = $this->create($request->all());
-        return responseJsonOk( ['msg' => $okMsg] );
+        return responseJsonOk( ['message' => $okMessage] );
     }
 
 
