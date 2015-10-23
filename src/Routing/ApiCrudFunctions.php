@@ -18,7 +18,7 @@ trait ApiCrudFunctions
         $validator = $this->validator($requestData);
 
         if ($validator->fails()) {
-            return responseJsonBadRequest( ['msg' => $errorMsg, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
+            return responseJsonUnprocessableEntity( ['msg' => $errorMsg, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
         }
 
         if( method_exists($this,'create') )
