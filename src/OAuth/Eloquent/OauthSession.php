@@ -1,0 +1,22 @@
+<?php
+
+namespace Daylight\OAuth\Eloquent;
+
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Daylight\OAuth\Eloquent\OauthAccessToken;
+
+class OauthSession extends Model
+{
+	protected static function boot() {
+	    parent::boot();    
+	    static::deleting(function(OauthSession $session){
+	    	$session->accessToken->delete();
+	    });
+	}
+
+    public function accessToken()
+    {
+    	return $this->hasOne(OauthAccessToken::class, 'session_id', 'id');
+    }
+}

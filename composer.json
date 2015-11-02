@@ -13,7 +13,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "paulvl/backup": "1.*"
+        "paulvl/backup": "1.*",
+        "lucadegasperi/oauth2-server-laravel": "5.0.*"
     },
     "autoload": {
         "psr-4": {
