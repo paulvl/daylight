@@ -16,6 +16,26 @@ class AccountConfirmationServiceProvider extends ServiceProvider
     protected $defer = true;
 
     /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../../database/migrations/2014_10_12_200000_create_account_confirmations_table.php' => database_path('migrations/2014_10_12_200000_create_account_confirmations_table.php')
+        ]);
+
+        $this->publishes([
+            __DIR__.'/../../../lang/en/confirmations.php' => base_path('resources/lang/en/confirmations.php')
+        ]);
+
+        $this->publishes([
+            __DIR__.'/../../../lang/es/confirmations.php' => base_path('resources/lang/es/confirmations.php')
+        ]);
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void

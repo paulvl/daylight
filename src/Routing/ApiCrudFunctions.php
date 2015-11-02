@@ -23,12 +23,16 @@ trait ApiCrudFunctions
 
         if( method_exists($this,'create') )
         {
-        	return $this->create($request);
+        	$modelInstance = $this->create($request);
+        }else{
+
+            $modelInstance = $class::create($requestData);
         }
 
-        $modelInstance = $class::create($requestData);
-
-        // $modelInstance = $this->create($request->all());
+        if ($modelInstance instanceof CanConfirmAccountContract) {
+            return $this->postEmail($request);
+        }
+        
         return responseJsonOk( ['message' => $okMessage] );
     }
 

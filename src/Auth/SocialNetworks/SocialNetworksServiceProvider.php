@@ -14,13 +14,10 @@ class SocialNetworksServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->publishes([
-        //     __DIR__.'/../config/package.php' => config_path('package.php')
-        // ], 'config');
 
         $this->publishes([
-            __DIR__.'/../../../database/migrations/' => database_path('migrations')
-        ], 'migrations');
+            __DIR__.'/../../../database/migrations/2014_10_12_300000_create_social_accounts_table.php' => database_path('migrations/2014_10_12_300000_create_social_accounts_table.php')
+        ]);
     }
 
     /**
