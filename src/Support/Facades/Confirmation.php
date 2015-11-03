@@ -31,11 +31,18 @@ class Confirmation extends Facade
     const INVALID_USER = 'confirmations.user';
 
     /**
-     * Constant representing an invalid token.
+     * Constant representing an invalid token creation.
      *
      * @var string
      */
     const INVALID_TOKEN = 'confirmations.token';
+
+    /**
+     * Constant representing a null token.
+     *
+     * @var string
+     */
+    const NULL_TOKEN = 'confirmations.null_token';
 
     /**
      * Get the registered name of the component.

@@ -33,6 +33,10 @@ class AccountConfirmationServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../../lang/es/confirmations.php' => base_path('resources/lang/es/confirmations.php')
         ]);
+
+        $this->publishes([
+            __DIR__.'/../../../config/confirmation.php' => base_path('config/confirmation.php')
+        ]);
     }
 
     /**
@@ -60,15 +64,17 @@ class AccountConfirmationServiceProvider extends ServiceProvider
             // The confirmation token repository is responsible for storing the email addresses
             // and confirmation reset tokens. It will be used to confirm the tokens are valid
             // for the given e-mail addresses. We will resolve an implementation here.
+
             $tokens = $app['auth.confirmation.tokens'];
 
             $users = $app['auth']->driver()->getProvider();
 
-            $view = $app['config']['auth.confirmation.email'];
+            $view = $app['config']['confirmation.email'];
 
             // The confirmation broker uses a token repository to validate tokens and send user
             // confirmation e-mails, as well as validating that account confirmation process as an
-            // aggregate service of sorts providing a convenient interface for resets.
+            // aggregate service of sorts providing a convenient interface for confirmations.
+
             return new ConfirmationBroker(
                 $tokens, $users, $app['mailer'], $view
             );
@@ -88,11 +94,11 @@ class AccountConfirmationServiceProvider extends ServiceProvider
             // The database token repository is an implementation of the token repository
             // interface, and is responsible for the actual storing of auth tokens and
             // their e-mail addresses. We will inject this table and hash key to it.
-            $table = $app['config']['auth.confirmation.table'];
+            $table = $app['config']['confirmation.table'];
 
             $key = $app['config']['app.key'];
 
-            $expire = $app['config']->get('auth.confirmation.expire', 7);
+            $expire = $app['config']->get('confirmation.expire', 7);
 
             return new DbRepository($connection, $table, $key, $expire);
         });

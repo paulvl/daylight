@@ -16,6 +16,7 @@ return [
     'verified' => 'Your account has been confirmed!',
     'sent' => 'We have e-mailed your account confirmation link!',
     'token' => 'This account confirmation token is invalid.',
+    'null_token' => 'Confirmation token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
 
 ];

@@ -29,7 +29,7 @@ trait ApiConfirmsAccounts
                 return responseJsonOk(['message' => trans($response)]);
 
             case Confirmation::INVALID_TOKEN:
-                return responseJsonUnprocessableEntity(['message' => 'invalid token', 'errors' => ['email' => trans($response)]]);
+                return responseJsonUnprocessableEntity(['message' => trans($response), 'errors' => ['email' => trans($response)]]);
         }
     }
 
@@ -52,7 +52,7 @@ trait ApiConfirmsAccounts
     public function getConfirm($token = null)
     {
         if (is_null($token)) {
-            return responseJsonNotFound(['message' => '', 'errors' => '']);
+            return responseJsonNotFound(['message' => trans(Confirmation::NULL_TOKEN), 'errors' => trans(Confirmation::NULL_TOKEN)]);
         }
 
         $credentials = ['token' => $token];
@@ -66,7 +66,7 @@ trait ApiConfirmsAccounts
                 return responseJsonOk(['message' => trans($response), 'data' => null]);
 
             default:
-                return responseJsonUnprocessableEntity(['message' => '', 'errors' => ['email' => trans($response)]]);
+                return responseJsonUnprocessableEntity(['message' => trans($response), 'errors' => ['email' => trans($response)]]);
         }
     }
 
