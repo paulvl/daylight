@@ -26,7 +26,7 @@ trait ApiConfirmsAccounts
 
         switch ($response) {
             case Confirmation::CONFIRMATION_LINK_SENT:
-                return responseJsonOk(['message'] => trans($response));
+                return responseJsonOk(['message' => trans($response)]);
 
             case Confirmation::INVALID_TOKEN:
                 return responseJsonUnprocessableEntity('message' => 'invalid token', 'errors' => ['email' => trans($response)]);
