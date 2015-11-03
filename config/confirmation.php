@@ -17,7 +17,8 @@ return [
     |
     */
 
-    'email' => 'emails.confirmation',
-    'table' => 'account_confirmations',
-    'expire' => 7,
+    'email'                 => 'emails.confirmation',
+    'confirmation_url_path' => 'auth/confirm', // without domain, just path
+    'table'                 => 'account_confirmations',
+    'expire'                => 7,
 ];

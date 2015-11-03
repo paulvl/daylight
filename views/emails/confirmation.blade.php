@@ -1,0 +1,1 @@
+{{ trans('confirmations.link'). url( config('confirmation.confirmation_url_path'), [$token] ) }}

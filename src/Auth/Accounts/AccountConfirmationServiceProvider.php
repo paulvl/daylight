@@ -37,6 +37,10 @@ class AccountConfirmationServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../../config/confirmation.php' => base_path('config/confirmation.php')
         ]);
+
+        $this->publishes([
+            __DIR__.'/../../../views/emails/confirmation.blade.php' => base_path('resources/views/confirmation.blade.php')
+        ]);
     }
 
     /**
