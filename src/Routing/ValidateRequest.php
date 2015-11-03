@@ -2,11 +2,17 @@
 
 namespace Daylight\Routing;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 trait ValidateRequest
 {
+	/**
+    * Get a validator for an incoming request.
+    *
+    * @param  array  $data
+    * @param  array  $rules
+    * @return \Illuminate\Contracts\Validation\Validator
+    */
 
     protected function validator(array $data, $rules = array())
     {

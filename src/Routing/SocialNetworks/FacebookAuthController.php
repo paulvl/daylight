@@ -1,6 +1,6 @@
 <?php
 
-namespace Daylight\Routing;
+namespace Daylight\Routing\SocialNetworks;
 
 use Daylight\Auth\SocialNetworks\SocialProviders;
 

@@ -10,7 +10,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 trait ApiConfirmsAccounts
 {
-
     /**
      * Send a confirmation link to the given user.
      *
@@ -30,8 +29,7 @@ trait ApiConfirmsAccounts
                 return responseJsonOk(['message'] => trans($response));
 
             case Confirmation::INVALID_TOKEN:
-                return responseJsonUnprocessableEntity();
-                return redirect()->back()->withErrors(['email' => trans($response)]);
+                return responseJsonUnprocessableEntity('message' => 'invalid token', 'errors' => ['email' => trans($response)]);
         }
     }
 
@@ -81,7 +79,6 @@ trait ApiConfirmsAccounts
     protected function confirmAccount($user)
     {
         $user->verified = true;
-
         $user->save();
     }
 }

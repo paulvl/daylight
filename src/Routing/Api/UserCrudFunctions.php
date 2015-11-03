@@ -1,31 +1,31 @@
 <?php
 
-namespace Daylight\Routing;
+namespace Daylight\Routing\Api;
 
 use Illuminate\Http\Request;
+use Daylight\Foundation\Auth\ApiConfirmsAccounts;
+use Daylight\Routing\ValidateRequest;
 
-trait ApiCrudFunctions
+trait UserCrudFunctions
 {
-	use ValidateRequest;
+	use ApiConfirmsAccounts,
+        ValidateRequest,
+        CrudMessages;
 
 	public function createOrFail($class, Request $request)
     {
         $requestData = $request->all();
 
-        $errorMessage = isset($this->errorMessage) ? $this->errorMessage : 'content cannot be parsed';
-        $okMessage = isset($this->okMessage) ? $this->okMessage : 'record was created successfully';
-
         $validator = $this->validator($requestData);
 
         if ($validator->fails()) {
-            return responseJsonUnprocessableEntity( ['message' => $errorMessage, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
+            return responseJsonUnprocessableEntity( ['message' => $this->contentCannotBeParsedMsg, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
         }
 
         if( method_exists($this,'create') )
         {
         	$modelInstance = $this->create($request);
         }else{
-
             $modelInstance = $class::create($requestData);
         }
 
@@ -33,7 +33,7 @@ trait ApiCrudFunctions
             return $this->postEmail($request);
         }
         
-        return responseJsonOk( ['message' => $okMessage] );
+        return responseJsonOk( ['message' => $this->creationSuccessMsg] );
     }
 
 
