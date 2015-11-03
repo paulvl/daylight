@@ -5,6 +5,7 @@ namespace Daylight\Routing\Api;
 use Illuminate\Http\Request;
 use Daylight\Foundation\Auth\ApiConfirmsAccounts;
 use Daylight\Routing\ValidateRequest;
+use Daylight\Contracts\Auth\CanConfirmAccount as CanConfirmAccountContract;
 
 trait UserCrudFunctions
 {
