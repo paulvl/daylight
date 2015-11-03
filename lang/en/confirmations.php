@@ -17,6 +17,7 @@ return [
     'sent' => 'We have e-mailed your account confirmation link!',
     'token' => 'This account confirmation token is invalid.',
     'null_token' => 'Confirmation token is invalid.',
+    'already_verified' => 'Tour account has been already confirmed!',
     'user' => "We can't find a user with that e-mail address.",
 
 ];

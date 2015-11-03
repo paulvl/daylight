@@ -17,6 +17,7 @@ return [
     'sent' => 'Te hemos enviado un e-mailed con el link de confirmación de cuenta!',
     'token' => 'El token de confirmación de esta cuenta es inválido.',
     'null_token' => 'El token de confirmación es inválido.',
+    'already_verified' => 'Tu cuenta ya ha sido confirmada!',
     'user' => "No podemos encontrar un usuario con ese dirección de correo electrónico.",
 
 ];

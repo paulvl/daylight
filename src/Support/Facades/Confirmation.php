@@ -45,6 +45,13 @@ class Confirmation extends Facade
     const NULL_TOKEN = 'confirmations.null_token';
 
     /**
+     * Constant representing an already verified user.
+     *
+     * @var string
+     */
+    const ALREADY_VERIFIED = 'confirmations.already_verified';
+
+    /**
      * Get the registered name of the component.
      *
      * @return string

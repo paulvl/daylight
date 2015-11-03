@@ -37,6 +37,9 @@ trait ConfirmsAccounts
         switch ($response) {
             case Confirmation::CONFIRMATION_LINK_SENT:
                 return redirect($this->loginPath())->with('status', trans($response));
+                
+            case Confirmation::ALREADY_VERIFIED:
+                return responseJsonOk(['message' => trans($response)]);
 
             case Confirmation::INVALID_TOKEN:
                 return redirect()->back()->withErrors(['email' => trans($response)]);

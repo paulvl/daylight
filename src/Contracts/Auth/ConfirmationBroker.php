@@ -35,6 +35,20 @@ interface ConfirmationBroker
     const INVALID_TOKEN = 'confirmations.token';
 
     /**
+     * Constant representing a null token.
+     *
+     * @var string
+     */
+    const NULL_TOKEN = 'confirmations.null_token';
+
+    /**
+     * Constant representing an already verified user.
+     *
+     * @var string
+     */
+    const ALREADY_VERIFIED = 'confirmations.already_verified';
+
+    /**
      * Send an account confirmation link to a user.
      *
      * @param  array  $credentials
