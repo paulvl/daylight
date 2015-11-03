@@ -29,7 +29,7 @@ trait ApiConfirmsAccounts
                 return responseJsonOk(['message' => trans($response)]);
 
             case Confirmation::INVALID_TOKEN:
-                return responseJsonUnprocessableEntity('message' => 'invalid token', 'errors' => ['email' => trans($response)]);
+                return responseJsonUnprocessableEntity(['message' => 'invalid token', 'errors' => ['email' => trans($response)]]);
         }
     }
 
