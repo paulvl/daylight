@@ -12,7 +12,7 @@ trait CrudFunctions
 	use ValidateRequest,
         CrudMessages;
 
-	public function createOrFail($request, Closure $callback = null)
+	public static function createOrFail($request, Closure $callback = null)
     {
         $requestData = ($request instanceof Request) ? $request->all() : $request;
 
