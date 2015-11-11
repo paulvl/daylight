@@ -9,8 +9,7 @@ use Daylight\Routing\Api\CrudMessages;
 
 trait CrudFunctions
 {
-	use ValidateRequest,
-        CrudMessages;
+	use CrudMessages;
 
 	public static function createOrFail($request, Closure $callback = null)
     {
@@ -30,6 +29,12 @@ trait CrudFunctions
         }
         
         return responseJsonOk( ['message' => $this->creationSuccessMsg] );
+    }
+
+    public function validator(array $data, $rules = array())
+    {
+        $validationRules = isset($this->rules) ? $this->rules : $rules;
+        return Validator::make($data, $validationRules);
     }
 
 
