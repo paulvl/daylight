@@ -15,11 +15,11 @@ trait CrudFunctions
     {
         $requestData = ($request instanceof Request) ? $request->all() : $request;
 
-        $validator = call_user_func('validator', $requestData);
+        //$validator = call_user_func('validator', $requestData);
 
-        if ($validator->fails()) {
+        /*if ($validator->fails()) {
             return responseJsonUnprocessableEntity( ['message' => $this->contentCannotBeParsedMsg, 'errors' => shrinkValidationErrors( $validator->errors()->getMessages() ) ] );
-        }
+        }*/
 
         if( !is_null($callback) )
         {
