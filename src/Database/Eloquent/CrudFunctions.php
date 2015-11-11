@@ -12,9 +12,9 @@ trait CrudFunctions
 	use ValidateRequest,
         CrudMessages;
 
-	public function createOrFail(Request $request, Closure $callback = null)
+	public function createOrFail($request, Closure $callback = null)
     {
-        $requestData = $request->all();
+        $requestData = ($request instanceof Request) ? $request->all() : $request;
 
         $validator = $this->validator($requestData);
 
@@ -27,10 +27,6 @@ trait CrudFunctions
         	$modelInstance = call_user_func($callback);
         }else{
             $modelInstance = self::create($requestData);
-        }
-
-        if ($modelInstance instanceof CanConfirmAccountContract) {
-            return $this->postEmail($request);
         }
         
         return responseJsonOk( ['message' => $this->creationSuccessMsg] );
