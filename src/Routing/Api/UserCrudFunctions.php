@@ -40,7 +40,7 @@ trait UserCrudFunctions
 
         if($returnModelInstance === true)
         {
-            $response['data'] => $modelInstance->toArray();
+            $response['data'] = $modelInstance->toArray();
         }
         
         return responseJsonOk( $response );
@@ -69,7 +69,7 @@ trait UserCrudFunctions
 
         if($returnModelInstance === true)
         {
-            $response['data'] => $modelInstance->toArray();
+            $response['data'] = $modelInstance->toArray();
         }
 
         return responseJsonOk( $response );

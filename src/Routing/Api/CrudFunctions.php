@@ -33,7 +33,7 @@ trait CrudFunctions
 
         if($returnModelInstance === true)
         {
-            $response['data'] => $modelInstance->toArray();
+            $response['data'] = $modelInstance->toArray();
         }
 
         return responseJsonOk( $response );
@@ -62,7 +62,7 @@ trait CrudFunctions
 
         if($returnModelInstance === true)
         {
-            $response['data'] => $modelInstance->toArray();
+            $response['data'] = $modelInstance->toArray();
         }
 
         return responseJsonOk( $response );
