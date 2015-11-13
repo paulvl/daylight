@@ -53,7 +53,7 @@ trait CrudFunctions
 
         if( method_exists($this, 'update') )
         {
-        	$modelInstance = $this->update($request);
+        	$modelInstance = $this->update($request, $modelId);
         }else{
             $modelInstance = $class::find($modelId);
             foreach ($requestData as $key => $value) {
