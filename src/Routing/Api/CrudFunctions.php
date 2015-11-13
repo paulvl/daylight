@@ -55,7 +55,11 @@ trait CrudFunctions
         {
         	$modelInstance = $this->update($request);
         }else{
-            $modelInstance = $class::where('id', $modelId)->update($requestData);
+            $modelInstance = $class::find($modelId);
+            foreach ($requestData as $key => $value) {
+                $modelInstance->$key = $value;
+            }
+            $modelInstance->save();
         }
 
         $response = ['message' => $this->updateSuccessMsg];
