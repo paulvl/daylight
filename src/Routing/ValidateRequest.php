@@ -14,10 +14,9 @@ trait ValidateRequest
     * @return \Illuminate\Contracts\Validation\Validator
     */
 
-    protected function validator(array $data, $rules = array())
+    protected function validator(array $data, array $rules)
     {
-        $validationRules = isset($this->rules) ? $this->rules : $rules;
-        return Validator::make($data, $validationRules);
+        return Validator::make($data, $rules);
     }
 
 
