@@ -10,7 +10,7 @@ trait CrudFunctions
 	use ValidateRequest,
         CrudMessages;
 
-    public function createOrFail($class, Request $request, boolean $returnModelInstance = false, array $rules = array())
+    public function createOrFail($class, Request $request, $returnModelInstance = false, array $rules = array())
     {
         $requestData = $request->all();
 
@@ -31,7 +31,7 @@ trait CrudFunctions
 
         $response = ['message' => $this->creationSuccessMsg];
 
-        if($returnModelInstance)
+        if($returnModelInstance === true)
         {
             $response['data'] => $modelInstance->toArray();
         }
@@ -39,7 +39,7 @@ trait CrudFunctions
         return responseJsonOk( $response );
     }
 
-	public function updateOrFail($class, $modelId, Request $request, boolean $returnModelInstance = false, array $rules = array())
+	public function updateOrFail($class, $modelId, Request $request, $returnModelInstance = false, array $rules = array())
     {
         $requestData = $request->all();
 
@@ -60,7 +60,7 @@ trait CrudFunctions
 
         $response = ['message' => $this->updateSuccessMsg];
 
-        if($returnModelInstance)
+        if($returnModelInstance === true)
         {
             $response['data'] => $modelInstance->toArray();
         }
