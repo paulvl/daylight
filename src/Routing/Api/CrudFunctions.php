@@ -10,11 +10,11 @@ trait CrudFunctions
 	use ValidateRequest,
         CrudMessages;
 
-    public function createOrFail($class, Request $request, boolean $returnModelInstance = false, array $rules = null)
+    public function createOrFail($class, Request $request, boolean $returnModelInstance = false, array $rules = array())
     {
         $requestData = $request->all();
 
-        $creationRules = !is_null($rule) ? $rules : (isset($this->creationRules) ? $this->creationRules : array());
+        $creationRules = count($rules) > 0 ? $rules : (isset($this->creationRules) ? $this->creationRules : array());
 
         $validator = $this->validator($requestData, $creationRules);
 
@@ -39,11 +39,11 @@ trait CrudFunctions
         return responseJsonOk( $response );
     }
 
-	public function updateOrFail($class, $modelId, Request $request, boolean $returnModelInstance = false, array $rules = null)
+	public function updateOrFail($class, $modelId, Request $request, boolean $returnModelInstance = false, array $rules = array())
     {
         $requestData = $request->all();
 
-        $updateRules = !is_null($rule) ? $rules : (isset($this->updateRules) ? $this->updateRules : array());
+        $updateRules = count($rules) > 0 ? $rules : (isset($this->updateRules) ? $this->updateRules : array());
 
         $validator = $this->validator($requestData, $updateRules);
 
