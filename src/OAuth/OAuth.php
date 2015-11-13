@@ -23,7 +23,8 @@ class OAuth {
 
 	public static function getRequestSession()
 	{
-    	return self::getAccessTokenEntity()->getSession();
+		$accessTokenEntity = self::getAccessTokenEntity();
+    	return is_null($accessTokenEntity) ? $accessTokenEntity : $accessTokenEntity->getSession();
 	}
 
 	public static function expireRequestSession()
