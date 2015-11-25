@@ -4,6 +4,7 @@ namespace Daylight\Routing\Api;
 
 use Illuminate\Http\Request;
 use Daylight\Routing\ValidateRequest;
+use Daylight\Routing\ExecutionError;
 
 trait CrudFunctions
 {
@@ -60,6 +61,18 @@ trait CrudFunctions
                 $modelInstance->$key = $value;
             }
             $modelInstance->save();
+        }
+
+        if($modelInstance instanceof ExecutionError)
+        {
+            $response = ['message' => $modelInstance->message];
+
+            if($returnModelInstance === true)
+            {
+                $response['data'] = $modelInstance->data->toArray();
+            }
+
+            return responseJsonForbidden($response);
         }
 
         $response = ['message' => $this->updateSuccessMsg];
