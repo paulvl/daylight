@@ -159,12 +159,14 @@ class ConfirmationBroker implements ConfirmationBrokerContract
      */
     protected function validateConfirmation(array $credentials)
     {
-        if (is_null($user = $this->getUser($credentials))) {
-            return ConfirmationBrokerContract::INVALID_USER;
-        }
-
         if (! $this->tokens->exists($user, $credentials['token'])) {
             return ConfirmationBrokerContract::INVALID_TOKEN;
+        }
+
+        $token = $this->tokens->retrieveByToken($credentials['token']);
+
+        if (is_null($user = $this->getUser(['email' => $token->email]))) {
+            return ConfirmationBrokerContract::INVALID_USER;
         }
 
         return $user;

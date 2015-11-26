@@ -138,6 +138,11 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
         return time();
     }
 
+    public function retrieveByToken($token)
+    {
+        return $this->getTable()->where('token', $token)->first();
+    }
+
     /**
      * Delete a token record by token.
      *
