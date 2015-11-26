@@ -159,7 +159,7 @@ class ConfirmationBroker implements ConfirmationBrokerContract
      */
     protected function validateConfirmation(array $credentials)
     {
-        if (! $this->tokens->exists($user, $credentials['token'])) {
+        if (! $this->tokens->exists($credentials['token'])) {
             return ConfirmationBrokerContract::INVALID_TOKEN;
         }
 

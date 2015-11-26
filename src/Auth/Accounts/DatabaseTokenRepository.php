@@ -106,11 +106,9 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
      * @param  string  $token
      * @return bool
      */
-    public function exists(CanConfirmAccountContract $user, $token)
+    public function exists($token)
     {
-        $email = $user->getEmailForAccountConfirmation();
-
-        $token = (array) $this->getTable()->where('email', $email)->where('token', $token)->first();
+        $token = (array) $this->getTable()->where('token', $token)->first();
 
         return $token && ! $this->tokenExpired($token);
     }
