@@ -17,11 +17,10 @@ interface TokenRepositoryInterface
     /**
      * Determine if a token record exists and is valid.
      *
-     * @param  \Illuminate\Contracts\Auth\CanResetPassword  $user
      * @param  string  $token
      * @return bool
      */
-    public function exists(CanConfirmAccountContract $user, $token);
+    public function exists($token);
 
     /**
      * Delete a token record.
