@@ -7,6 +7,8 @@ use Daylight\OAuth\Eloquent\OauthSession;
 
 class OauthAccessToken extends Model
 {
+    protected $fillable = ['id', 'session_id', 'expire_time'];
+    
     public static function removeExpiredOnes()
     {
     	$accessTokens = self::where('expire_time', '<', time())->get();
