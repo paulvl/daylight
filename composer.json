@@ -14,14 +14,14 @@
         "laravel/framework": "5.1.*",
         "paulvl/backup": "1.*",
         "lucadegasperi/oauth2-server-laravel": "5.0.*",
-        "overtrue/laravel-lang": "1.0.*"
+        "overtrue/laravel-lang": "1.0.*",
+        "paulvl/larasponse" : "1.*"
     },
     "autoload": {
         "psr-4": {
             "Daylight\\": "src/"
         },
         "files": [
-            "src/Http/helpers.php",
             "files/helpers.php"
         ]
     }
