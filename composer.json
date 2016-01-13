@@ -11,11 +11,11 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
-        "paulvl/backup": "1.*",
-        "lucadegasperi/oauth2-server-laravel": "5.0.*",
+        "laravel/framework": "5.2.*",
+        "paulvl/backup": "2.*",
+        "lucadegasperi/oauth2-server-laravel": "5.1.*",
         "overtrue/laravel-lang": "1.0.*",
-        "paulvl/larasponse" : "1.*"
+        "paulvl/larasponse" : "2.*"
     },
     "autoload": {
         "psr-4": {
