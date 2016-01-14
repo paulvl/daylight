@@ -3,6 +3,7 @@
 namespace Daylight\Validation;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator as ValidatorFacade;
 use Daylight\Validation\Validator;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
@@ -28,7 +29,7 @@ class ValidatorServiceProvider extends ServiceProvider
         );
 
         // Registering the validator extension with the validator factory
-        $this->app[ValidationFactory::class]->resolver(
+        ValidatorFacade::resolver(
             function($translator, $data, $rules, $messages, $customAttributes = array())
             {
                 return new Validator(
