@@ -14,7 +14,7 @@ class ValidatorServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    //protected $defer = true;
 
     /**
      * Bootstrap the application events.
@@ -29,7 +29,7 @@ class ValidatorServiceProvider extends ServiceProvider
         );
 
         // Registering the validator extension with the validator factory
-        ValidatorFacade::resolver(
+        $this->app[ValidationFactory::class]->resolver(
             function($translator, $data, $rules, $messages, $customAttributes = array())
             {
                 return new Validator(
