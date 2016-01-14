@@ -4,6 +4,7 @@ namespace Daylight\Validation;
 
 use Illuminate\Support\ServiceProvider;
 use Daylight\Validation\Validator;
+use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
 class ValidatorServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,7 @@ class ValidatorServiceProvider extends ServiceProvider
         );
 
         // Registering the validator extension with the validator factory
-        $this->app['validator']->resolver(
+        $this->app[ValidationFactory::class]->resolver(
             function($translator, $data, $rules, $messages, $customAttributes = array())
             {
                 return new Validator(
